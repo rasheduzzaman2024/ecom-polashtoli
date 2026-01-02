@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - Polashtoli Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span><i class="bi bi-phone"></i> +880 1234-567890</span>
+                    <span class="ms-3"><i class="bi bi-envelope"></i> info@polashtoli.com</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <span>Free Shipping on Orders Over ৳1000</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand brand-logo" href="index.html">
+                <span class="brand-icon">🌺</span>
+                <span class="brand-text">Polashtoli</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categories</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="products.html?category=electronics">Electronics</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=fashion">Fashion</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=home">Home & Living</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="cart.html" class="nav-icon me-3"><i class="bi bi-cart3"></i><span class="badge" id="cartBadge">0</span></a>
+                    <a href="profile.html" class="nav-icon me-3 active"><i class="bi bi-person"></i></a>
+                    <button class="btn btn-outline-danger btn-sm" onclick="logout()">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body text-center">
+                            <div class="mb-3">
+                                <i class="bi bi-person-circle" style="font-size: 5rem; color: #667eea;"></i>
+                            </div>
+                            <h5>John Doe</h5>
+                            <p class="text-muted mb-0">john@email.com</p>
+                        </div>
+                    </div>
+                    <div class="list-group">
+                        <a href="#dashboard" class="list-group-item list-group-item-action active" data-bs-toggle="list">
+                            <i class="bi bi-speedometer2 me-2"></i>Dashboard
+                        </a>
+                        <a href="#orders" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                            <i class="bi bi-bag-check me-2"></i>My Orders
+                        </a>
+                        <a href="#wishlist" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                            <i class="bi bi-heart me-2"></i>Wishlist
+                        </a>
+                        <a href="#addresses" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                            <i class="bi bi-geo-alt me-2"></i>Addresses
+                        </a>
+                        <a href="#settings" class="list-group-item list-group-item-action" data-bs-toggle="list">
+                            <i class="bi bi-gear me-2"></i>Settings
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-9">
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="dashboard">
+                            <div class="card shadow-sm mb-4">
+                                <div class="card-body">
+                                    <h4 class="mb-4">Dashboard</h4>
+                                    <div class="row g-4">
+                                        <div class="col-md-4">
+                                            <div class="card bg-primary text-white">
+                                                <div class="card-body">
+                                                    <h3>12</h3>
+                                                    <p class="mb-0">Total Orders</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card bg-success text-white">
+                                                <div class="card-body">
+                                                    <h3>8</h3>
+                                                    <p class="mb-0">Wishlist Items</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="card bg-info text-white">
+                                                <div class="card-body">
+                                                    <h3>৳24,500</h3>
+                                                    <p class="mb-0">Total Spent</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h5 class="mb-4">Recent Orders</h5>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>Order ID</th>
+                                                    <th>Date</th>
+                                                    <th>Total</th>
+                                                    <th>Status</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>#ORD-001</td>
+                                                    <td>Dec 28, 2025</td>
+                                                    <td>৳3,499</td>
+                                                    <td><span class="badge bg-success">Delivered</span></td>
+                                                    <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>#ORD-002</td>
+                                                    <td>Dec 25, 2025</td>
+                                                    <td>৳1,999</td>
+                                                    <td><span class="badge bg-primary">Shipped</span></td>
+                                                    <td><a href="#" class="btn btn-sm btn-outline-primary">Track</a></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="orders">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h4 class="mb-4">My Orders</h4>
+                                    <p>View all your orders <a href="orders.html">here</a></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="wishlist">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h4 class="mb-4">My Wishlist</h4>
+                                    <div id="wishlistItems">
+                                        <p>No items in wishlist</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="addresses">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h4 class="mb-4">Saved Addresses</h4>
+                                    <button class="btn btn-primary mb-3">Add New Address</button>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="card mb-3">
+                                                <div class="card-body">
+                                                    <h6>Home</h6>
+                                                    <p>123 Main Street<br>Dhaka 1000<br>Bangladesh</p>
+                                                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                                    <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tab-pane fade" id="settings">
+                            <div class="card shadow-sm">
+                                <div class="card-body">
+                                    <h4 class="mb-4">Account Settings</h4>
+                                    <form>
+                                        <div class="mb-3">
+                                            <label class="form-label">Full Name</label>
+                                            <input type="text" class="form-control" value="John Doe">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Email</label>
+                                            <input type="email" class="form-control" value="john@email.com">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Phone</label>
+                                            <input type="tel" class="form-control" value="+880 1234-567890">
+                                        </div>
+                                        <hr class="my-4">
+                                        <h5 class="mb-3">Change Password</h5>
+                                        <div class="mb-3">
+                                            <label class="form-label">Current Password</label>
+                                            <input type="password" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">New Password</label>
+                                            <input type="password" class="form-control">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label class="form-label">Confirm New Password</label>
+                                            <input type="password" class="form-control">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4"><h5>About Polashtoli</h5><p>Your trusted e-commerce destination</p></div>
+                <div class="col-lg-2"><h5>Quick Links</h5><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="col-lg-2"><h5>Categories</h5><ul class="footer-links"><li><a href="products.html">Products</a></li></ul></div>
+                <div class="col-lg-4"><h5>Contact</h5><p><i class="bi bi-phone"></i> +880 1234-567890</p></div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2026 Polashtoli Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+</html>

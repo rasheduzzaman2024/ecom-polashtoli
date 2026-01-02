@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - Polashtoli Store</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span><i class="bi bi-phone"></i> +880 1234-567890</span>
+                    <span class="ms-3"><i class="bi bi-envelope"></i> info@polashtoli.com</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <span>Free Shipping on Orders Over ৳1000</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand brand-logo" href="index.html">
+                <span class="brand-icon">🌺</span>
+                <span class="brand-text">Polashtoli</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categories</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="products.html?category=electronics">Electronics</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=fashion">Fashion</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=home">Home & Living</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=beauty">Beauty</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=sports">Sports</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <div class="search-box me-3">
+                        <input type="text" class="form-control" placeholder="Search products...">
+                        <i class="bi bi-search search-icon"></i>
+                    </div>
+                    <a href="cart.html" class="nav-icon me-3">
+                        <i class="bi bi-cart3"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </a>
+                    <a href="profile.html" class="nav-icon me-3">
+                        <i class="bi bi-person"></i>
+                    </a>
+                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section py-3 bg-light">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="products.html">Products</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" id="productName">Loading...</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Details -->
+    <section class="product-details py-5">
+        <div class="container">
+            <div class="row g-4">
+                <!-- Product Images -->
+                <div class="col-lg-6">
+                    <div class="product-images">
+                        <div class="main-image mb-3">
+                            <img src="https://via.placeholder.com/600x600" alt="Product" class="img-fluid rounded" id="mainImage">
+                        </div>
+                        <div class="thumbnail-images">
+                            <div class="row g-2" id="thumbnails">
+                                <!-- Thumbnails loaded dynamically -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="col-lg-6">
+                    <div class="product-info-details">
+                        <span class="product-category" id="category">Loading...</span>
+                        <h2 class="product-title mb-3" id="productTitle">Loading...</h2>
+                        
+                        <div class="product-rating mb-3">
+                            <span class="stars" id="productStars">★★★★★</span>
+                            <span class="rating-count" id="ratingCount">(0 reviews)</span>
+                        </div>
+
+                        <div class="product-price mb-4">
+                            <h3 class="current-price d-inline" id="currentPrice">৳0.00</h3>
+                            <span class="original-price ms-2" id="originalPrice"></span>
+                            <span class="discount-badge ms-2" id="discountBadge"></span>
+                        </div>
+
+                        <div class="product-description mb-4">
+                            <p id="productDescription">Loading product description...</p>
+                        </div>
+
+                        <!-- Quantity Selector -->
+                        <div class="quantity-selector mb-4">
+                            <label class="form-label">Quantity:</label>
+                            <div class="input-group" style="width: 150px;">
+                                <button class="btn btn-outline-secondary" type="button" onclick="decreaseQuantity()">
+                                    <i class="bi bi-dash"></i>
+                                </button>
+                                <input type="number" class="form-control text-center" value="1" min="1" id="quantity">
+                                <button class="btn btn-outline-secondary" type="button" onclick="increaseQuantity()">
+                                    <i class="bi bi-plus"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="product-actions mb-4">
+                            <button class="btn btn-primary btn-lg me-2" onclick="addToCartFromDetails()">
+                                <i class="bi bi-cart-plus me-2"></i>Add to Cart
+                            </button>
+                            <button class="btn btn-outline-primary btn-lg me-2" onclick="buyNow()">
+                                <i class="bi bi-lightning me-2"></i>Buy Now
+                            </button>
+                            <button class="btn btn-outline-secondary btn-lg" onclick="addToWishlistFromDetails()">
+                                <i class="bi bi-heart"></i>
+                            </button>
+                        </div>
+
+                        <!-- Product Meta -->
+                        <div class="product-meta">
+                            <p><strong>SKU:</strong> <span id="sku">N/A</span></p>
+                            <p><strong>Category:</strong> <span id="categoryMeta">N/A</span></p>
+                            <p><strong>Stock:</strong> <span class="text-success" id="stockStatus">In Stock</span></p>
+                            <p><strong>Share:</strong>
+                                <a href="#" class="text-decoration-none ms-2"><i class="bi bi-facebook"></i></a>
+                                <a href="#" class="text-decoration-none ms-2"><i class="bi bi-twitter"></i></a>
+                                <a href="#" class="text-decoration-none ms-2"><i class="bi bi-whatsapp"></i></a>
+                                <a href="#" class="text-decoration-none ms-2"><i class="bi bi-envelope"></i></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Tabs -->
+            <div class="product-tabs mt-5">
+                <ul class="nav nav-tabs" id="productTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button">
+                            Description
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="specifications-tab" data-bs-toggle="tab" data-bs-target="#specifications" type="button">
+                            Specifications
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button">
+                            Reviews <span class="badge bg-primary ms-1" id="reviewsBadge">0</span>
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content p-4 border border-top-0" id="productTabContent">
+                    <div class="tab-pane fade show active" id="description" role="tabpanel">
+                        <div id="fullDescription">
+                            <p>Loading full description...</p>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="specifications" role="tabpanel">
+                        <table class="table table-bordered" id="specsTable">
+                            <tbody>
+                                <!-- Specifications loaded dynamically -->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane fade" id="reviews" role="tabpanel">
+                        <div id="reviewsList">
+                            <!-- Reviews loaded dynamically -->
+                        </div>
+                        <div class="mt-4">
+                            <h5>Write a Review</h5>
+                            <form id="reviewForm">
+                                <div class="mb-3">
+                                    <label class="form-label">Rating</label>
+                                    <select class="form-select" id="rating" required>
+                                        <option value="5">★★★★★ (5)</option>
+                                        <option value="4">★★★★☆ (4)</option>
+                                        <option value="3">★★★☆☆ (3)</option>
+                                        <option value="2">★★☆☆☆ (2)</option>
+                                        <option value="1">★☆☆☆☆ (1)</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Review Title</label>
+                                    <input type="text" class="form-control" id="reviewTitle" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Your Review</label>
+                                    <textarea class="form-control" id="reviewText" rows="4" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit Review</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="related-products mt-5">
+                <h3 class="mb-4">Related Products</h3>
+                <div class="row g-4" id="relatedProducts">
+                    <!-- Related products loaded dynamically -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3">About Polashtoli</h5>
+                    <p>Your trusted destination for quality products at competitive prices.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="products.html?category=electronics">Electronics</a></li>
+                        <li><a href="products.html?category=fashion">Fashion</a></li>
+                        <li><a href="products.html?category=home">Home & Living</a></li>
+                        <li><a href="products.html?category=beauty">Beauty</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><i class="bi bi-geo-alt"></i> Dhaka, Bangladesh</li>
+                        <li><i class="bi bi-phone"></i> +880 1234-567890</li>
+                        <li><i class="bi bi-envelope"></i> info@polashtoli.com</li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2026 Polashtoli Store. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot Button -->
+    <button class="chatbot-btn" id="chatbotBtn">
+        <i class="bi bi-chat-dots"></i>
+    </button>
+
+    <!-- Chatbot Modal -->
+    <div class="chatbot-modal" id="chatbotModal">
+        <div class="chatbot-header">
+            <h5>AI Shopping Assistant</h5>
+            <button class="btn-close btn-close-white" id="closeChatbot"></button>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="bot-message">
+                <p>Hello! I'm your AI shopping assistant. How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chatbot-footer">
+            <input type="text" class="form-control" id="chatInput" placeholder="Type your message...">
+            <button class="btn btn-primary" id="sendMessage">
+                <i class="bi bi-send"></i>
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/product-details.js"></script>
+</body>
+</html>

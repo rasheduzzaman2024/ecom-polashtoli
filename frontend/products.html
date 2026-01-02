@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Polashtoli Store</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span><i class="bi bi-phone"></i> +880 1234-567890</span>
+                    <span class="ms-3"><i class="bi bi-envelope"></i> info@polashtoli.com</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <span>Free Shipping on Orders Over ৳1000</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand brand-logo" href="index.html">
+                <span class="brand-icon">🌺</span>
+                <span class="brand-text">Polashtoli</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="products.html">Products</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="products.html?category=electronics">Electronics</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=fashion">Fashion</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=home">Home & Living</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=beauty">Beauty</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=sports">Sports</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+                
+                <div class="d-flex align-items-center">
+                    <div class="search-box me-3">
+                        <input type="text" class="form-control" id="searchInput" placeholder="Search products...">
+                        <i class="bi bi-search search-icon"></i>
+                    </div>
+                    <a href="cart.html" class="nav-icon me-3">
+                        <i class="bi bi-cart3"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </a>
+                    <a href="profile.html" class="nav-icon me-3">
+                        <i class="bi bi-person"></i>
+                    </a>
+                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section py-3 bg-light">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Products</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-page py-5">
+        <div class="container">
+            <div class="row">
+                <!-- Filters Sidebar -->
+                <div class="col-lg-3">
+                    <div class="filters-sidebar">
+                        <h5 class="mb-4">Filters</h5>
+                        
+                        <!-- Categories -->
+                        <div class="filter-group mb-4">
+                            <h6>Categories</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="electronics" id="cat1">
+                                <label class="form-check-label" for="cat1">Electronics</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="fashion" id="cat2">
+                                <label class="form-check-label" for="cat2">Fashion</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="home" id="cat3">
+                                <label class="form-check-label" for="cat3">Home & Living</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="beauty" id="cat4">
+                                <label class="form-check-label" for="cat4">Beauty</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="sports" id="cat5">
+                                <label class="form-check-label" for="cat5">Sports</label>
+                            </div>
+                        </div>
+
+                        <!-- Price Range -->
+                        <div class="filter-group mb-4">
+                            <h6>Price Range</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="priceRange" value="0-1000" id="price1">
+                                <label class="form-check-label" for="price1">Under ৳1,000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="priceRange" value="1000-3000" id="price2">
+                                <label class="form-check-label" for="price2">৳1,000 - ৳3,000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="priceRange" value="3000-5000" id="price3">
+                                <label class="form-check-label" for="price3">৳3,000 - ৳5,000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="priceRange" value="5000-10000" id="price4">
+                                <label class="form-check-label" for="price4">৳5,000 - ৳10,000</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="priceRange" value="10000-999999" id="price5">
+                                <label class="form-check-label" for="price5">Over ৳10,000</label>
+                            </div>
+                        </div>
+
+                        <!-- Rating -->
+                        <div class="filter-group mb-4">
+                            <h6>Rating</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="4" id="rating4">
+                                <label class="form-check-label" for="rating4">
+                                    <span class="stars">★★★★</span> & Up
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="3" id="rating3">
+                                <label class="form-check-label" for="rating3">
+                                    <span class="stars">★★★</span> & Up
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Brands -->
+                        <div class="filter-group mb-4">
+                            <h6>Brands</h6>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="samsung" id="brand1">
+                                <label class="form-check-label" for="brand1">Samsung</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="apple" id="brand2">
+                                <label class="form-check-label" for="brand2">Apple</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="nike" id="brand3">
+                                <label class="form-check-label" for="brand3">Nike</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary w-100 mb-2" onclick="applyFilters()">Apply Filters</button>
+                        <button class="btn btn-outline-secondary w-100" onclick="clearFilters()">Clear All</button>
+                    </div>
+                </div>
+
+                <!-- Products Grid -->
+                <div class="col-lg-9">
+                    <div class="products-header mb-4 d-flex justify-content-between align-items-center">
+                        <div>
+                            <h4 id="productsCount">Loading products...</h4>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <label class="me-2">Sort by:</label>
+                            <select class="form-select" id="sortSelect" onchange="sortProducts()">
+                                <option value="featured">Featured</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="newest">Newest</option>
+                                <option value="rating">Top Rated</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row g-4" id="productsGrid">
+                        <!-- Products will be loaded dynamically -->
+                    </div>
+
+                    <!-- Pagination -->
+                    <nav aria-label="Products pagination" class="mt-5">
+                        <ul class="pagination justify-content-center" id="pagination">
+                            <!-- Pagination will be generated dynamically -->
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3">About Polashtoli</h5>
+                    <p>Your trusted destination for quality products at competitive prices. We bring you the best shopping experience with excellent customer service.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6">
+                    <h5 class="mb-3">Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="products.html?category=electronics">Electronics</a></li>
+                        <li><a href="products.html?category=fashion">Fashion</a></li>
+                        <li><a href="products.html?category=home">Home & Living</a></li>
+                        <li><a href="products.html?category=beauty">Beauty</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h5 class="mb-3">Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><i class="bi bi-geo-alt"></i> Dhaka, Bangladesh</li>
+                        <li><i class="bi bi-phone"></i> +880 1234-567890</li>
+                        <li><i class="bi bi-envelope"></i> info@polashtoli.com</li>
+                    </ul>
+                    <div class="payment-methods mt-3">
+                        <img src="https://via.placeholder.com/40x25?text=VISA" alt="Visa">
+                        <img src="https://via.placeholder.com/40x25?text=MC" alt="Mastercard">
+                        <img src="https://via.placeholder.com/40x25?text=bKash" alt="bKash">
+                        <img src="https://via.placeholder.com/40x25?text=Nagad" alt="Nagad">
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4">
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2026 Polashtoli Store. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AI Chatbot Button -->
+    <button class="chatbot-btn" id="chatbotBtn">
+        <i class="bi bi-chat-dots"></i>
+    </button>
+
+    <!-- Chatbot Modal -->
+    <div class="chatbot-modal" id="chatbotModal">
+        <div class="chatbot-header">
+            <h5>AI Shopping Assistant</h5>
+            <button class="btn-close btn-close-white" id="closeChatbot"></button>
+        </div>
+        <div class="chatbot-body" id="chatbotBody">
+            <div class="bot-message">
+                <p>Hello! I'm your AI shopping assistant. How can I help you today?</p>
+            </div>
+        </div>
+        <div class="chatbot-footer">
+            <input type="text" class="form-control" id="chatInput" placeholder="Type your message...">
+            <button class="btn btn-primary" id="sendMessage">
+                <i class="bi bi-send"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+</body>
+</html>

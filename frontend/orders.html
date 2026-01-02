@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Orders - Polashtoli Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <span><i class="bi bi-phone"></i> +880 1234-567890</span>
+                    <span class="ms-3"><i class="bi bi-envelope"></i> info@polashtoli.com</span>
+                </div>
+                <div class="col-md-6 text-end">
+                    <span>Track Your Orders</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand brand-logo" href="index.html">
+                <span class="brand-icon">🌺</span>
+                <span class="brand-text">Polashtoli</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categories</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="products.html?category=electronics">Electronics</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=fashion">Fashion</a></li>
+                            <li><a class="dropdown-item" href="products.html?category=home">Home & Living</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                </ul>
+                <div class="d-flex align-items-center">
+                    <a href="cart.html" class="nav-icon me-3"><i class="bi bi-cart3"></i><span class="badge" id="cartBadge">0</span></a>
+                    <a href="profile.html" class="nav-icon me-3"><i class="bi bi-person"></i></a>
+                    <a href="login.html" class="btn btn-primary btn-sm">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="breadcrumb-section py-3 bg-light">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb mb-0">
+                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                    <li class="breadcrumb-item"><a href="profile.html">Profile</a></li>
+                    <li class="breadcrumb-item active">My Orders</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="py-5">
+        <div class="container">
+            <h2 class="mb-4">My Orders</h2>
+
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <select class="form-select">
+                        <option>All Orders</option>
+                        <option>Pending</option>
+                        <option>Processing</option>
+                        <option>Shipped</option>
+                        <option>Delivered</option>
+                        <option>Cancelled</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <input type="text" class="form-control" placeholder="Search orders...">
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="https://via.placeholder.com/100" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Order #ORD-20260101-001</h6>
+                            <p class="text-muted mb-1">Placed on: January 1, 2026</p>
+                            <p class="mb-0">3 items • Total: ৳5,499</p>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="badge bg-success">Delivered</span>
+                            <p class="text-muted small mb-0 mt-1">Dec 28, 2025</p>
+                        </div>
+                        <div class="col-md-2 text-end">
+                            <button class="btn btn-outline-primary btn-sm mb-2 w-100">View Details</button>
+                            <button class="btn btn-outline-secondary btn-sm w-100">Reorder</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="https://via.placeholder.com/100" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Order #ORD-20251228-002</h6>
+                            <p class="text-muted mb-1">Placed on: December 28, 2025</p>
+                            <p class="mb-0">2 items • Total: ৳3,999</p>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="badge bg-primary">Shipped</span>
+                            <p class="text-muted small mb-0 mt-1">In Transit</p>
+                        </div>
+                        <div class="col-md-2 text-end">
+                            <button class="btn btn-outline-primary btn-sm mb-2 w-100">Track Order</button>
+                            <button class="btn btn-outline-danger btn-sm w-100">Cancel</button>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <div class="progress" style="height: 5px;">
+                            <div class="progress-bar" style="width: 60%"></div>
+                        </div>
+                        <div class="d-flex justify-content-between mt-2">
+                            <small class="text-success"><i class="bi bi-check-circle-fill"></i> Order Placed</small>
+                            <small class="text-success"><i class="bi bi-check-circle-fill"></i> Processing</small>
+                            <small class="text-primary"><i class="bi bi-circle-fill"></i> Shipped</small>
+                            <small class="text-muted"><i class="bi bi-circle"></i> Delivered</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm mb-4">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                        <div class="col-md-2">
+                            <img src="https://via.placeholder.com/100" class="img-fluid rounded">
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Order #ORD-20251225-003</h6>
+                            <p class="text-muted mb-1">Placed on: December 25, 2025</p>
+                            <p class="mb-0">1 item • Total: ৳1,999</p>
+                        </div>
+                        <div class="col-md-2">
+                            <span class="badge bg-warning">Processing</span>
+                            <p class="text-muted small mb-0 mt-1">Being Prepared</p>
+                        </div>
+                        <div class="col-md-2 text-end">
+                            <button class="btn btn-outline-primary btn-sm mb-2 w-100">View Details</button>
+                            <button class="btn btn-outline-danger btn-sm w-100">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card shadow-sm">
+                <div class="card-body text-center py-5">
+                    <i class="bi bi-box-seam" style="font-size: 4rem; color: #ccc;"></i>
+                    <h5 class="mt-3">No More Orders</h5>
+                    <p class="text-muted">You've reached the end of your order history</p>
+                    <a href="products.html" class="btn btn-primary">Continue Shopping</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-4"><h5>About Polashtoli</h5><p>Your trusted e-commerce destination</p></div>
+                <div class="col-lg-2"><h5>Quick Links</h5><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+                <div class="col-lg-2"><h5>Categories</h5><ul class="footer-links"><li><a href="products.html">Products</a></li></ul></div>
+                <div class="col-lg-4"><h5>Contact</h5><p><i class="bi bi-phone"></i> +880 1234-567890</p></div>
+            </div>
+            <hr class="my-4">
+            <p class="text-center mb-0">&copy; 2026 Polashtoli Store. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
