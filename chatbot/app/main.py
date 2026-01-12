@@ -70,9 +70,13 @@ def process_message(message: str, context: Dict = None) -> Dict[str, Any]:
     message_lower = message.lower()
     
     # Intent detection
-    if any(word in message_lower for word in ['hello', 'hi', 'hey', 'greetings']):
+    if any(word in message_lower for word in ['hello', 'hi', 'hey','greetings']):
         return {
-            'response': "Hello! Welcome to Polashtoli Store. I'm your AI shopping assistant. How can I help you today?",
+            
+            'response': 
+            "🌙 Assalamu Alaikum (আপনার উপর শান্তি বর্ষিত হোক)\n\n"
+            "Welcome to **Polashtoli Store**! 🤝\n\n"
+            "I'm your AI shopping assistant. How can I help you today?",
             'suggestions': [
                 "Show me featured products",
                 "I'm looking for electronics",

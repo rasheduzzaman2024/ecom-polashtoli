@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Polashtoli Store</title>
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/messaging.css">
 </head>
 <body>
+    <!-- Top Bar -->
     <div class="top-bar">
         <div class="container">
             <div class="row">
@@ -18,12 +21,13 @@
                     <span class="ms-3"><i class="bi bi-envelope"></i> info@polashtoli.com</span>
                 </div>
                 <div class="col-md-6 text-end">
-                    <span>Free Shipping on Orders Over ৳1000</span>
+                    <span>We're Here to Help!</span>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
         <div class="container">
             <a class="navbar-brand brand-logo" href="index.html">
@@ -37,19 +41,14 @@
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="products.html">Products</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Categories</a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="products.html?category=electronics">Electronics</a></li>
-                            <li><a class="dropdown-item" href="products.html?category=fashion">Fashion</a></li>
-                            <li><a class="dropdown-item" href="products.html?category=home">Home & Living</a></li>
-                        </ul>
-                    </li>
                     <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
                     <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
                 </ul>
                 <div class="d-flex align-items-center">
-                    <a href="cart.html" class="nav-icon me-3"><i class="bi bi-cart3"></i><span class="badge" id="cartBadge">0</span></a>
+                    <a href="cart.html" class="nav-icon me-3">
+                        <i class="bi bi-cart3"></i>
+                        <span class="badge" id="cartBadge">0</span>
+                    </a>
                     <a href="profile.html" class="nav-icon me-3"><i class="bi bi-person"></i></a>
                     <a href="login.html" class="btn btn-primary btn-sm">Login</a>
                 </div>
@@ -57,111 +56,295 @@
         </div>
     </nav>
 
-    <section class="breadcrumb-section py-3 bg-light">
-        <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb mb-0">
-                    <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                    <li class="breadcrumb-item active">Contact Us</li>
-                </ol>
-            </nav>
+    <!-- AI Chatbot Button -->
+   
+
+    <button class="message-btn" id="messageBtn" title="Contact Us">
+    <i class="bi bi-chat-dots"></i>
+    <span class="message-badge">3</span>
+</button>
+
+<!-- Message Selection Modal (NEW) -->
+<div class="message-selection-modal" id="messageSelectionModal">
+    <div class="message-selection-content">
+        <div class="message-selection-header">
+            <div class="greeting-icon">👋</div>
+            <h4>Hi There!</h4>
+            <p>Let us know if we can help you with anything at all</p>
+        </div>
+        
+        <div class="message-options">
+            <!-- AI Assistant Option -->
+            <button class="message-option-btn" onclick="openAIAssistant()">
+                <div class="option-icon ai-icon">
+                    <i class="bi bi-robot"></i>
+                </div>
+                <div class="option-content">
+                    <h5>AI Assistant</h5>
+                    <p>Chat with our AI bot instantly</p>
+                </div>
+                <i class="bi bi-chevron-right"></i>
+            </button>
+            
+            <!-- WhatsApp Option -->
+            <button class="message-option-btn" onclick="openWhatsApp()">
+                <div class="option-icon whatsapp-icon">
+                    <i class="bi bi-whatsapp"></i>
+                </div>
+                <div class="option-content">
+                    <h5>WhatsApp</h5>
+                    <p>Chat on WhatsApp</p>
+                </div>
+                <i class="bi bi-chevron-right"></i>
+            </button>
+            
+            <!-- Messenger Option -->
+            <button class="message-option-btn" onclick="openMessenger()">
+                <div class="option-icon messenger-icon">
+                    <i class="bi bi-messenger"></i>
+                </div>
+                <div class="option-content">
+                    <h5>Messenger</h5>
+                    <p>Chat on Facebook Messenger</p>
+                </div>
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+        
+        <button class="close-selection" onclick="closeMessageSelection()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+</div>
+
+<!-- AI Chatbot Modal (Opens when AI Assistant is selected) -->
+<div class="chatbot-modal" id="chatbotModal">
+    <div class="chatbot-header">
+        <div class="d-flex align-items-center">
+            <button class="back-btn" onclick="backToSelection()">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+            <div class="ms-2">
+                <h5 class="mb-0">AI Shopping Assistant</h5>
+                <small class="text-light">Online</small>
+            </div>
+        </div>
+        <button class="btn-close btn-close-white" onclick="closeChatbot()"></button>
+    </div>
+    <div class="chatbot-body" id="chatbotBody">
+        <div class="bot-message">
+            <div class="bot-avatar">
+                <i class="bi bi-robot"></i>
+            </div>
+            <div class="message-content">
+                <p>Hello! I'm your AI shopping assistant. How can I help you today?</p>
+                <small class="message-time">Just now</small>
+            </div>
+        </div>
+    </div>
+    <div class="chatbot-footer">
+        <input type="text" class="form-control" id="chatInput" placeholder="Type your message...">
+        <button class="btn btn-primary" id="sendMessage">
+            <i class="bi bi-send"></i>
+        </button>
+    </div>
+</div>
+
+
+    <!-- Contact Hero -->
+    <section class="contact-hero py-5 bg-light">
+        <div class="container text-center">
+            <h1 class="display-4 mb-3">Get in Touch</h1>
+            <p class="lead">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
         </div>
     </section>
 
-    <section class="py-5">
+    <!-- Contact Section -->
+    <section class="contact-section py-5">
         <div class="container">
-            <div class="row mb-5">
-                <div class="col-lg-12 text-center">
-                    <h1 class="mb-3">Get In Touch</h1>
-                    <p class="lead">Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.</p>
-                </div>
-            </div>
-
-            <div class="row g-4 mb-5">
-                <div class="col-md-4">
-                    <div class="card h-100 text-center border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <i class="bi bi-geo-alt-fill" style="font-size: 2.5rem; color: #667eea;"></i>
-                            <h5 class="mt-3">Visit Us</h5>
-                            <p>123 Shopping Street<br>Dhaka 1000, Bangladesh</p>
+            <div class="row g-4">
+                <!-- Contact Form -->
+                <div class="col-lg-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Send Us a Message</h5>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 text-center border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <i class="bi bi-telephone-fill" style="font-size: 2.5rem; color: #667eea;"></i>
-                            <h5 class="mt-3">Call Us</h5>
-                            <p>+880 1234-567890<br>Mon-Sat, 9AM-6PM</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card h-100 text-center border-0 shadow-sm">
-                        <div class="card-body p-4">
-                            <i class="bi bi-envelope-fill" style="font-size: 2.5rem; color: #667eea;"></i>
-                            <h5 class="mt-3">Email Us</h5>
-                            <p>info@polashtoli.com<br>support@polashtoli.com</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-lg-6 mb-4">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-4">
-                            <h4 class="mb-4">Send Us a Message</h4>
+                        <div class="card-body">
                             <form id="contactForm">
-                                <div class="mb-3">
-                                    <label class="form-label">Your Name</label>
-                                    <input type="text" class="form-control" required placeholder="John Doe">
+                                <div class="row g-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Full Name *</label>
+                                        <input type="text" class="form-control" id="contactName" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Email Address *</label>
+                                        <input type="email" class="form-control" id="contactEmail" required>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Phone Number</label>
+                                        <input type="tel" class="form-control" id="contactPhone">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Subject *</label>
+                                        <select class="form-select" id="contactSubject" required>
+                                            <option value="">Select a subject</option>
+                                            <option value="General Inquiry">General Inquiry</option>
+                                            <option value="Order Issue">Order Issue</option>
+                                            <option value="Product Question">Product Question</option>
+                                            <option value="Technical Support">Technical Support</option>
+                                            <option value="Feedback">Feedback</option>
+                                            <option value="Partnership">Partnership</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-12">
+                                        <label class="form-label">Message *</label>
+                                        <textarea class="form-control" id="contactMessage" rows="5" required></textarea>
+                                    </div>
+                                    <div class="col-12">
+                                        <button type="submit" class="btn btn-primary btn-lg">
+                                            <i class="bi bi-send me-2"></i>Send Message
+                                        </button>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Email Address</label>
-                                    <input type="email" class="form-control" required placeholder="your@email.com">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" placeholder="+880 1234-567890">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Subject</label>
-                                    <select class="form-select">
-                                        <option>General Inquiry</option>
-                                        <option>Order Issue</option>
-                                        <option>Product Question</option>
-                                        <option>Partnership</option>
-                                        <option>Other</option>
-                                    </select>
-                                </div>
-                                <div class="mb-3">
-                                    <label class="form-label">Message</label>
-                                    <textarea class="form-control" rows="5" required placeholder="Your message..."></textarea>
-                                </div>
-                                <button type="submit" class="btn btn-primary w-100">Send Message</button>
                             </form>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-lg-6">
-                    <div class="card border-0 shadow-sm h-100">
-                        <div class="card-body p-0">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3651.8973456790953!2d90.39167831498098!3d23.750933984588956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka%2C%20Bangladesh!5e0!3m2!1sen!2s!4v1234567890" width="100%" height="100%" style="border:0; min-height: 400px;" allowfullscreen="" loading="lazy"></iframe>
+                <!-- Contact Info -->
+                <div class="col-lg-4">
+                    <!-- Address -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-geo-alt text-primary me-2"></i>Our Office
+                            </h5>
+                            <p class="mb-0">
+                                Polashtoli Store<br>
+                                123 Main Street<br>
+                                Dhaka 1000<br>
+                                Bangladesh
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-phone text-primary me-2"></i>Phone
+                            </h5>
+                            <p class="mb-1"><strong>Customer Service:</strong></p>
+                            <p class="mb-2">+880 1234-567890</p>
+                            <p class="mb-1"><strong>Business Inquiries:</strong></p>
+                            <p class="mb-0">+880 1234-567891</p>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="card shadow-sm mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-envelope text-primary me-2"></i>Email
+                            </h5>
+                            <p class="mb-1"><strong>General:</strong></p>
+                            <p class="mb-2">info@polashtoli.com</p>
+                            <p class="mb-1"><strong>Support:</strong></p>
+                            <p class="mb-0">support@polashtoli.com</p>
+                        </div>
+                    </div>
+
+                    <!-- Working Hours -->
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <i class="bi bi-clock text-primary me-2"></i>Working Hours
+                            </h5>
+                            <p class="mb-1"><strong>Monday - Friday:</strong></p>
+                            <p class="mb-2">9:00 AM - 6:00 PM</p>
+                            <p class="mb-1"><strong>Saturday:</strong></p>
+                            <p class="mb-2">10:00 AM - 4:00 PM</p>
+                            <p class="mb-1"><strong>Sunday:</strong></p>
+                            <p class="mb-0">Closed</p>
                         </div>
                     </div>
                 </div>
             </div>
 
+            <!-- Map -->
             <div class="row mt-5">
-                <div class="col-lg-12">
-                    <div class="card border-0 bg-light">
-                        <div class="card-body p-5 text-center">
-                            <h4 class="mb-3">Need Immediate Assistance?</h4>
-                            <p class="mb-4">Our customer support team is available 24/7 to help you</p>
-                            <a href="tel:+8801234567890" class="btn btn-primary btn-lg me-2"><i class="bi bi-telephone-fill me-2"></i>Call Now</a>
-                            <a href="#" class="btn btn-outline-primary btn-lg" id="chatbotBtn"><i class="bi bi-chat-dots-fill me-2"></i>Live Chat</a>
+                <div class="col-12">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">Find Us on Map</h5>
+                        </div>
+                        <div class="card-body p-0">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d233668.38703692693!2d90.25446165!3d23.780753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8b087026b81%3A0x8fa563bbdd5904c2!2sDhaka!5e0!3m2!1sen!2sbd!4v1234567890123"
+                                width="100%" 
+                                height="400" 
+                                style="border:0;" 
+                                allowfullscreen="" 
+                                loading="lazy">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="row mt-5">
+                <div class="col-12">
+                    <h3 class="mb-4 text-center">Frequently Asked Questions</h3>
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                                    How do I track my order?
+                                </button>
+                            </h2>
+                            <div id="faq1" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    You can track your order by logging into your account and visiting the "My Orders" section. You'll also receive tracking information via email once your order is shipped.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                                    What is your return policy?
+                                </button>
+                            </h2>
+                            <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We offer a 7-day return policy on most products. Items must be unused and in their original packaging. Please contact our customer service team to initiate a return.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                                    Do you offer cash on delivery?
+                                </button>
+                            </h2>
+                            <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Yes! We offer Cash on Delivery (COD) across Bangladesh. You can also pay online using bKash, Nagad, or credit/debit cards.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                                    How long does delivery take?
+                                </button>
+                            </h2>
+                            <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Delivery typically takes 3-5 business days for Dhaka and 5-7 business days for other areas. Express delivery options are also available.
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -169,21 +352,62 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="footer py-5">
         <div class="container">
             <div class="row g-4">
-                <div class="col-lg-4"><h5>About Polashtoli</h5><p>Your trusted e-commerce destination</p></div>
-                <div class="col-lg-2"><h5>Quick Links</h5><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-                <div class="col-lg-2"><h5>Categories</h5><ul class="footer-links"><li><a href="products.html">Products</a></li></ul></div>
-                <div class="col-lg-4"><h5>Contact</h5><p><i class="bi bi-phone"></i> +880 1234-567890</p></div>
+                <div class="col-lg-4">
+                    <h5>About Polashtoli</h5>
+                    <p>Your trusted destination for quality products at competitive prices.</p>
+                    <div class="social-links mt-3">
+                        <a href="#"><i class="bi bi-facebook"></i></a>
+                        <a href="#"><i class="bi bi-instagram"></i></a>
+                        <a href="#"><i class="bi bi-twitter"></i></a>
+                        <a href="#"><i class="bi bi-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2">
+                    <h5>Categories</h5>
+                    <ul class="footer-links">
+                        <li><a href="products.html?category=electronics">Electronics</a></li>
+                        <li><a href="products.html?category=fashion">Fashion</a></li>
+                        <li><a href="products.html?category=home">Home & Living</a></li>
+                        <li><a href="products.html?category=beauty">Beauty</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4">
+                    <h5>Contact Us</h5>
+                    <ul class="footer-links">
+                        <li><i class="bi bi-geo-alt"></i> Dhaka, Bangladesh</li>
+                        <li><i class="bi bi-phone"></i> +880 1234-567890</li>
+                        <li><i class="bi bi-envelope"></i> info@polashtoli.com</li>
+                    </ul>
+                </div>
             </div>
             <hr class="my-4">
-            <p class="text-center mb-0">&copy; 2026 Polashtoli Store. All rights reserved.</p>
+            <div class="row">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-0">&copy; 2026 Polashtoli Store. All rights reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                    <a href="#">Privacy Policy</a> | <a href="#">Terms & Conditions</a>
+                </div>
+            </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/contact.js"></script>
+    <script src="js/messaging.js"></script>
 </body>
 </html>

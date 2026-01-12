@@ -1,4 +1,4 @@
-package com.polashtoli.store.model;
+package com.polashtoli.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -13,32 +13,33 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 public class OrderItem {
-
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @ManyToOne
+    
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
-
-    @ManyToOne
-    @JoinColumn(name = "product_id", nullable = false)
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
     private Product product;
-
+    
     @Column(nullable = false)
     private Integer quantity;
-
-    @Column(nullable = false)
-    private BigDecimal price; // Price at time of order
-
-    private Integer discount; // Discount at time of order
-
-    public BigDecimal getSubtotal() {
-        BigDecimal subtotal = price.multiply(BigDecimal.valueOf(quantity));
-        if (discount != null && discount > 0) {
-            subtotal = subtotal.multiply(BigDecimal.valueOf(1 - discount / 100.0));
+    
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal price;
+    
+    @Column(nullable = false, precision = 10, scale = 2)
+    private BigDecimal subtotal;
+    
+    @PrePersist
+    @PreUpdate
+    protected void calculateSubtotal() {
+        if (price != null && quantity != null) {
+            subtotal = price.multiply(new BigDecimal(quantity));
         }
-        return subtotal;
     }
 }

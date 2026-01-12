@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Polashtoli Store</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-wrapper">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar" id="adminSidebar">
+            <!-- Sidebar Header -->
+            <div class="admin-sidebar-header">
+                <span class="admin-logo">🌺</span>
+                <span class="admin-brand">Polashtoli Admin</span>
+            </div>
+            
+            <!-- Navigation -->
+            <nav class="admin-nav">
+                <!-- Main -->
+                <div class="admin-nav-section">
+                    <div class="admin-nav-title">Main</div>
+                    <a href="dashboard.html" class="admin-nav-item active">
+                        <i class="bi bi-speedometer2"></i>
+                        <span>Dashboard</span>
+                    </a>
+                    <a href="analytics.html" class="admin-nav-item">
+                        <i class="bi bi-graph-up"></i>
+                        <span>Analytics</span>
+                    </a>
+                </div>
+                
+                <!-- E-Commerce -->
+                <div class="admin-nav-section">
+                    <div class="admin-nav-title">E-Commerce</div>
+                    <a href="../admin/products.html" class="admin-nav-item">
+                        <i class="bi bi-box-seam"></i>
+                        <span>Products</span>
+                        <span class="admin-nav-badge">142</span>
+                    </a>
+                    <a href="orders.html" class="admin-nav-item">
+                        <i class="bi bi-cart-check"></i>
+                        <span>Orders</span>
+                        <span class="admin-nav-badge">12</span>
+                    </a>
+                    <a href="customers.html" class="admin-nav-item">
+                        <i class="bi bi-people"></i>
+                        <span>Customers</span>
+                    </a>
+                    <a href="coupons.html" class="admin-nav-item">
+                        <i class="bi bi-ticket-perforated"></i>
+                        <span>Coupons</span>
+                    </a>
+                </div>
+                
+                <!-- Settings -->
+                <div class="admin-nav-section">
+                    <div class="admin-nav-title">Settings</div>
+                    <a href="settings.html" class="admin-nav-item">
+                        <i class="bi bi-gear"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="../index.html" target="_blank" class="admin-nav-item">
+                        <i class="bi bi-globe"></i>
+                        <span>View Store</span>
+                    </a>
+                    <a href="#" class="admin-nav-item" data-action="logout">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Logout</span>
+                    </a>
+                </div>
+            </nav>
+        </aside>
+        
+        <!-- Main Content -->
+        <main class="admin-main">
+            <!-- Top Bar -->
+            <div class="admin-topbar">
+                <div class="admin-topbar-left">
+                    <button class="admin-menu-toggle" id="menuToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="admin-search">
+                        <input type="text" placeholder="Search..." data-translate="searchPlaceholder">
+                        <i class="bi bi-search"></i>
+                    </div>
+                </div>
+                <div class="admin-topbar-right">
+                    <div class="admin-notification">
+                        <i class="bi bi-bell"></i>
+                        <span class="admin-notification-badge">5</span>
+                    </div>
+                    <div class="admin-user">
+                        <div class="admin-user-avatar">A</div>
+                        <div class="admin-user-info">
+                            <h6>Admin User</h6>
+                            <p>Administrator</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Content -->
+            <div class="admin-content">
+                <!-- Page Header -->
+                <div class="admin-page-header">
+                    <h1 class="admin-page-title" data-translate="dashboard">Dashboard</h1>
+                    <p class="admin-page-subtitle">Welcome back! Here's what's happening today.</p>
+                </div>
+                
+                <!-- Stats Grid -->
+                <div class="admin-stats-grid">
+                    <!-- Total Sales -->
+                    <div class="admin-stat-card primary">
+                        <div class="admin-stat-header">
+                            <div>
+                                <div class="admin-stat-value" id="totalSales">৳0</div>
+                                <div class="admin-stat-label">Total Sales</div>
+                            </div>
+                            <div class="admin-stat-icon">
+                                <i class="bi bi-currency-dollar"></i>
+                            </div>
+                        </div>
+                        <div class="admin-stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            <span id="salesChange">+12.5%</span>
+                            <span style="color: #64748b; font-weight: 400;">vs last month</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Total Orders -->
+                    <div class="admin-stat-card success">
+                        <div class="admin-stat-header">
+                            <div>
+                                <div class="admin-stat-value" id="totalOrders">0</div>
+                                <div class="admin-stat-label">Total Orders</div>
+                            </div>
+                            <div class="admin-stat-icon">
+                                <i class="bi bi-cart-check"></i>
+                            </div>
+                        </div>
+                        <div class="admin-stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            <span id="ordersChange">+8.2%</span>
+                            <span style="color: #64748b; font-weight: 400;">vs last month</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Total Customers -->
+                    <div class="admin-stat-card warning">
+                        <div class="admin-stat-header">
+                            <div>
+                                <div class="admin-stat-value" id="totalCustomers">0</div>
+                                <div class="admin-stat-label">Total Customers</div>
+                            </div>
+                            <div class="admin-stat-icon">
+                                <i class="bi bi-people"></i>
+                            </div>
+                        </div>
+                        <div class="admin-stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            <span id="customersChange">+15.3%</span>
+                            <span style="color: #64748b; font-weight: 400;">vs last month</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Total Revenue -->
+                    <div class="admin-stat-card danger">
+                        <div class="admin-stat-header">
+                            <div>
+                                <div class="admin-stat-value" id="totalRevenue">৳0</div>
+                                <div class="admin-stat-label">Total Revenue</div>
+                            </div>
+                            <div class="admin-stat-icon">
+                                <i class="bi bi-graph-up"></i>
+                            </div>
+                        </div>
+                        <div class="admin-stat-change positive">
+                            <i class="bi bi-arrow-up"></i>
+                            <span id="revenueChange">+18.7%</span>
+                            <span style="color: #64748b; font-weight: 400;">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Charts Row -->
+                <div class="row g-4 mb-4">
+                    <!-- Sales Trend Chart -->
+                    <div class="col-lg-8">
+                        <div class="admin-chart-card">
+                            <div class="admin-chart-header">
+                                <h3 class="admin-chart-title">Sales Trend</h3>
+                                <div class="admin-chart-filters">
+                                    <button class="admin-chart-filter-btn" data-period="daily">Daily</button>
+                                    <button class="admin-chart-filter-btn" data-period="weekly">Weekly</button>
+                                    <button class="admin-chart-filter-btn active" data-period="monthly">Monthly</button>
+                                    <button class="admin-chart-filter-btn" data-period="yearly">Yearly</button>
+                                </div>
+                            </div>
+                            <div class="admin-chart-body">
+                                <canvas id="salesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Revenue Breakdown -->
+                    <div class="col-lg-4">
+                        <div class="admin-chart-card">
+                            <div class="admin-chart-header">
+                                <h3 class="admin-chart-title">Revenue by Category</h3>
+                            </div>
+                            <div class="admin-chart-body">
+                                <canvas id="revenueChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recent Orders Table -->
+                <div class="admin-table-card">
+                    <div class="admin-table-header">
+                        <h3 class="admin-table-title">Recent Orders</h3>
+                        <div class="admin-table-actions">
+                            <button class="admin-btn admin-btn-secondary">
+                                <i class="bi bi-funnel"></i>
+                                Filter
+                            </button>
+                            <button class="admin-btn admin-btn-primary">
+                                <i class="bi bi-download"></i>
+                                Export
+                            </button>
+                        </div>
+                    </div>
+                    <div class="admin-table-responsive">
+                        <table class="admin-table">
+                            <thead>
+                                <tr>
+                                    <th>Order ID</th>
+                                    <th>Customer</th>
+                                    <th>Date</th>
+                                    <th>Total</th>
+                                    <th>Status</th>
+                                    <th>Payment</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="recentOrdersTable">
+                                <!-- Orders will be loaded here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/auth.js"></script>
+    <script src="../js/route-guard.js"></script>
+    <script src="../js/language.js"></script>
+    <script src="../js/theme.js"></script>
+    <script src="../js/advanced-controls.js"></script>
+    <script src="../js/charts-config.js"></script>
+    <script src="../js/admin.js"></script>
+</body>
+</html>

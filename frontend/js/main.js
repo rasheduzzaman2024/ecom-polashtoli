@@ -1,6 +1,7 @@
 // API Configuration
 const API_BASE_URL = 'http://localhost:8080/api';
-const CHATBOT_API_URL = 'http://localhost:5000/api';
+// REMOVED: const CHATBOT_API_URL = 'http://localhost:5000/api';
+// Chatbot API is now configured in messaging.js
 
 // DOM Elements
 document.addEventListener('DOMContentLoaded', function() {
@@ -9,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function initializeApp() {
     loadFeaturedProducts();
-    initializeChatbot();
+    // REMOVED: initializeChatbot(); - Now handled by messaging.js
     initializeCart();
     initializeSearch();
     initializeScrollEffects();
@@ -248,122 +249,20 @@ function displaySearchResults(results) {
     console.log('Search results:', results);
 }
 
-// Chatbot
-let chatbotOpen = false;
-
-function initializeChatbot() {
-    const chatbotBtn = document.getElementById('chatbotBtn');
-    const chatbotModal = document.getElementById('chatbotModal');
-    const closeChatbot = document.getElementById('closeChatbot');
-    const sendMessage = document.getElementById('sendMessage');
-    const chatInput = document.getElementById('chatInput');
-    
-    if (!chatbotBtn || !chatbotModal) return;
-    
-    chatbotBtn.addEventListener('click', toggleChatbot);
-    closeChatbot.addEventListener('click', toggleChatbot);
-    
-    sendMessage.addEventListener('click', () => sendChatMessage());
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendChatMessage();
-        }
-    });
-}
-
-function toggleChatbot() {
-    const chatbotModal = document.getElementById('chatbotModal');
-    chatbotOpen = !chatbotOpen;
-    
-    if (chatbotOpen) {
-        chatbotModal.classList.add('active');
-    } else {
-        chatbotModal.classList.remove('active');
-    }
-}
-
-async function sendChatMessage() {
-    const chatInput = document.getElementById('chatInput');
-    const message = chatInput.value.trim();
-    
-    if (!message) return;
-    
-    // Display user message
-    appendChatMessage(message, 'user');
-    chatInput.value = '';
-    
-    // Show typing indicator
-    const typingIndicator = appendTypingIndicator();
-    
-    try {
-        const response = await fetch(`${CHATBOT_API_URL}/chat`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                message: message,
-                context: {
-                    cart: cart,
-                    userId: getUserId()
-                }
-            })
-        });
-        
-        const data = await response.json();
-        
-        // Remove typing indicator
-        typingIndicator.remove();
-        
-        // Display bot response
-        appendChatMessage(data.response, 'bot');
-        
-        // Handle any actions
-        if (data.action) {
-            handleChatbotAction(data.action);
-        }
-    } catch (error) {
-        console.error('Chatbot error:', error);
-        typingIndicator.remove();
-        appendChatMessage('Sorry, I encountered an error. Please try again.', 'bot');
-    }
-}
-
-function appendChatMessage(message, sender) {
-    const chatbotBody = document.getElementById('chatbotBody');
-    const messageDiv = document.createElement('div');
-    messageDiv.className = sender === 'user' ? 'user-message' : 'bot-message';
-    messageDiv.innerHTML = `<p>${message}</p>`;
-    chatbotBody.appendChild(messageDiv);
-    chatbotBody.scrollTop = chatbotBody.scrollHeight;
-    return messageDiv;
-}
-
-function appendTypingIndicator() {
-    const chatbotBody = document.getElementById('chatbotBody');
-    const typingDiv = document.createElement('div');
-    typingDiv.className = 'bot-message typing-indicator';
-    typingDiv.innerHTML = '<div class="loading"></div>';
-    chatbotBody.appendChild(typingDiv);
-    chatbotBody.scrollTop = chatbotBody.scrollHeight;
-    return typingDiv;
-}
-
-function handleChatbotAction(action) {
-    switch(action.type) {
-        case 'navigate':
-            window.location.href = action.url;
-            break;
-        case 'add_to_cart':
-            addToCart(action.productId);
-            break;
-        case 'search':
-            performSearch(action.query);
-            break;
-        default:
-            console.log('Unknown action:', action);
-    }
-}
+// ========================================
+// CHATBOT CODE REMOVED FROM HERE
+// Now handled by messaging.js
+// ========================================
+// The following functions have been removed:
+// - initializeChatbot()
+// - toggleChatbot()
+// - sendChatMessage()
+// - appendChatMessage()
+// - appendTypingIndicator()
+// - handleChatbotAction()
+//
+// These are now in messaging.js (or messaging-with-api.js)
+// ========================================
 
 // Scroll Effects
 function initializeScrollEffects() {

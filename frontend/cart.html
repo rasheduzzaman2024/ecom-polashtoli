@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Work+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="css/messaging.css">
 </head>
 <body>
     <!-- Top Bar -->
@@ -16,7 +17,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <span><i class="bi bi-phone"></i> +880 1234-567890</span>
+                    <span><i class="bi bi-phone"></i> +880 1964616035</span>
                     <span class="ms-3"><i class="bi bi-envelope"></i> info@polashtoli.com</span>
                 </div>
                 <div class="col-md-6 text-end">
@@ -211,7 +212,7 @@
                     <h5 class="mb-3">Contact Us</h5>
                     <ul class="footer-links">
                         <li><i class="bi bi-geo-alt"></i> Dhaka, Bangladesh</li>
-                        <li><i class="bi bi-phone"></i> +880 1234-567890</li>
+                        <li><i class="bi bi-phone"></i> +880 1964616035</li>
                         <li><i class="bi bi-envelope"></i> info@polashtoli.com</li>
                     </ul>
                 </div>
@@ -228,8 +229,105 @@
         </div>
     </footer>
 
+        <!-- AI Chatbot Button -->
+   
+
+    <button class="message-btn" id="messageBtn" title="Contact Us">
+    <i class="bi bi-chat-dots"></i>
+    <span class="message-badge">3</span>
+</button>
+
+<!-- Message Selection Modal (NEW) -->
+<div class="message-selection-modal" id="messageSelectionModal">
+    <div class="message-selection-content">
+        <div class="message-selection-header">
+            <div class="greeting-icon">👋</div>
+            <h4>Hi There!</h4>
+            <p>Let us know if we can help you with anything at all</p>
+        </div>
+        
+        <div class="message-options">
+            <!-- AI Assistant Option -->
+            <button class="message-option-btn" onclick="openAIAssistant()">
+                <div class="option-icon ai-icon">
+                    <i class="bi bi-robot"></i>
+                </div>
+                <div class="option-content">
+                    <h5>AI Assistant</h5>
+                    <p>Chat with our AI bot instantly</p>
+                </div>
+                <i class="bi bi-chevron-right"></i>
+            </button>
+            
+            <!-- WhatsApp Option -->
+            <button class="message-option-btn" onclick="openWhatsApp()">
+                <div class="option-icon whatsapp-icon">
+                    <i class="bi bi-whatsapp"></i>
+                </div>
+                <div class="option-content">
+                    <h5>WhatsApp</h5>
+                    <p>Chat on WhatsApp</p>
+                </div>
+                <i class="bi bi-chevron-right"></i>
+            </button>
+            
+            <!-- Messenger Option -->
+            <button class="message-option-btn" onclick="openMessenger()">
+                <div class="option-icon messenger-icon">
+                    <i class="bi bi-messenger"></i>
+                </div>
+                <div class="option-content">
+                    <h5>Messenger</h5>
+                    <p>Chat on Facebook Messenger</p>
+                </div>
+                <i class="bi bi-chevron-right"></i>
+            </button>
+        </div>
+        
+        <button class="close-selection" onclick="closeMessageSelection()">
+            <i class="bi bi-x-lg"></i>
+        </button>
+    </div>
+</div>
+
+<!-- AI Chatbot Modal (Opens when AI Assistant is selected) -->
+<div class="chatbot-modal" id="chatbotModal">
+    <div class="chatbot-header">
+        <div class="d-flex align-items-center">
+            <button class="back-btn" onclick="backToSelection()">
+                <i class="bi bi-arrow-left"></i>
+            </button>
+            <div class="ms-2">
+                <h5 class="mb-0">AI Shopping Assistant</h5>
+                <small class="text-light">Online</small>
+            </div>
+        </div>
+        <button class="btn-close btn-close-white" onclick="closeChatbot()"></button>
+    </div>
+    <div class="chatbot-body" id="chatbotBody">
+        <div class="bot-message">
+            <div class="bot-avatar">
+                <i class="bi bi-robot"></i>
+            </div>
+            <div class="message-content">
+                <p>Hello! I'm your AI shopping assistant. How can I help you today?</p>
+                <small class="message-time">Just now</small>
+            </div>
+        </div>
+    </div>
+    <div class="chatbot-footer">
+        <input type="text" class="form-control" id="chatInput" placeholder="Type your message...">
+        <button class="btn btn-primary" id="sendMessage">
+            <i class="bi bi-send"></i>
+        </button>
+    </div>
+</div>
+
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
+    <script src="js/messaging.js"></script>
 </body>
 </html>
